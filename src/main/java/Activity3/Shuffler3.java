@@ -52,6 +52,17 @@ public class Shuffler3 {
 	 */
 	public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] copy = new int[values.length];
+		int k = 0;
+		for(int j =0; j < (values.length+1)/2; j++) {
+			copy[j] = values[k];
+			k+=2;
+		}
+		k = 1;
+		for(int j = 26; j < values.length;j++) {
+			copy[j] = values[k];
+			k+=2;
+		}
 	}
 
 	/**
