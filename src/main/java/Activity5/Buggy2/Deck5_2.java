@@ -32,7 +32,7 @@ public class Deck5_2 {
 	 */
 	public Deck5_2(String[] ranks, String[] suits, int[] values) {
 		cards = new ArrayList<Card5_2>();
-		for (int j = 1; j < ranks.length; j++) { // BUG: j = 1 should be j = 0
+		for (int j = 0; j < ranks.length; j++) { // BUG: j = 1 should be j = 0
 			for (String suitString : suits) {
 				cards.add(new Card5_2(ranks[j], suitString, values[j]));
 			}

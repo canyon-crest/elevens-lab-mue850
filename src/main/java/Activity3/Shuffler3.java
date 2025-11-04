@@ -53,15 +53,19 @@ public class Shuffler3 {
 	public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
 		int[] copy = new int[values.length];
+		int mid = (values.length+1)/2;
 		int k = 0;
-		for(int j =0; j < (values.length+1)/2; j++) {
-			copy[j] = values[k];
+		for(int j =0; j < mid; j++) {
+			copy[k] = values[j];
 			k+=2;
 		}
 		k = 1;
-		for(int j = 26; j < values.length;j++) {
-			copy[j] = values[k];
+		for(int j = mid; j < values.length;j++) {
+			copy[k] = values[j];
 			k+=2;
+		}
+		for(int i = 0; i < values.length; i++) {
+			values[i] = copy[i];
 		}
 	}
 
@@ -78,5 +82,47 @@ public class Shuffler3 {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		for(int k = values.length-1; k > 0; k--) {
+			int r = (int)(Math.random()*(k+1));
+			int temp = values[k];
+			values[k] = values[r];
+			values[r] = temp;
+		}
 	}
+	public static String flip() {
+		double random = Math.random();
+		if( random < 2.0/3.0) {
+			return "heads";
+		}
+		else {
+			return "tails";
+		}
+	}
+	public static boolean arePermutations(int[] a, int[] b) {
+		if(a.length != b.length) {
+			return false;
+		}
+		for(int i = 0; i < a.length; i++) {
+			int Acount = 0;
+			int Bcount = 0;
+
+			for(int j = 0; j < a.length; j++) {
+				if(a[j] == a[i]) {
+					Acount++;
+				}
+			}
+			
+			for(int j = 0; j < b.length; j++) {
+				if(b[j] == a[i]) {
+					Bcount++;
+				}
+			}
+			
+			if(Acount != Bcount) {
+				return false;
+			}
+		}
+		
+	return true;
+}
 }

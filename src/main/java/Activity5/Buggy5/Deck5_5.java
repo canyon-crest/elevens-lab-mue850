@@ -32,7 +32,7 @@ public class Deck5_5 {
 	 */
 	public Deck5_5(String[] ranks, String[] suits, int[] values) {
 		cards = new ArrayList<Card5_5>();
-		for (int j = 1; j < ranks.length; j++) { // BUG #2: j = 1 should be j = 0
+		for (int j = 0; j < ranks.length; j++) { // BUG #2: j = 1 should be j = 0
 			for (String suitString : suits) {
 				cards.add(new Card5_5(ranks[j], suitString, values[j]));
 			}
@@ -46,7 +46,7 @@ public class Deck5_5 {
 	 * @return true if this deck is empty, false otherwise.
 	 */
 	public boolean isEmpty() {
-		return size < 0;	// BUG #1: < should be ==
+		return size == 0;	// BUG #1: < should be ==
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class Deck5_5 {
 	 * and reset the size to represent the entire deck.
 	 */
 	public void shuffle() {
-		for (int k = cards.size() - 1; k < 0; k--) { // BUG #3: < should be >
+		for (int k = cards.size() - 1; k > 0; k--) { // BUG #3: < should be >
 			int howMany = k + 1;
 			int start = 0;
 			int randPos = (int) (Math.random() * howMany) + start;
@@ -79,10 +79,11 @@ public class Deck5_5 {
 	 *         previously dealt.
 	 */
 	public Card5_5 deal() {
-		size--; // BUG #4: this statement should follow the isEmpty check
+		 // BUG #4: this statement should follow the isEmpty check
 		if (isEmpty()) {
 			return null;
 		}
+		size--;
 		Card5_5 c = cards.get(size);
 		return c;
 	}

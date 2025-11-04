@@ -114,7 +114,7 @@ public class ElevensBoard7 {
 	 * @return the card at position k on the board.
 	 * @param k is the board position of the card to return.
 	 */
-	public Card1 cardAt(int k) {
+	public Card7 cardAt(int k) {
 		return cards[k];
 	}
 

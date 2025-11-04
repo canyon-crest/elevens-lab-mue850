@@ -46,7 +46,7 @@ public class Deck5_1 {
 	 * @return true if this deck is empty, false otherwise.
 	 */
 	public boolean isEmpty() {
-		return size < 0;	// BUG: < should be ==
+		return size == 0;	// BUG: < should be ==
 	}
 
 	/**
